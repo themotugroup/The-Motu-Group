@@ -1,3 +1,4 @@
+import MotuGroupSite from "./MotuGroupSite.jsx";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import MotuGroupSite from "./MotuGroupSite.jsx";
