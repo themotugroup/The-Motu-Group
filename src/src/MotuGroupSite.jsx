@@ -1,7 +1,33 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+const Button = ({ asChild, className = "", variant, children, ...props }) => {
+  const base =
+    "inline-flex items-center justify-center px-4 py-2 text-sm font-semibold transition";
+  const v =
+    variant === "outline"
+      ? "border border-white/20 bg-transparent text-white hover:bg-white/5"
+      : variant === "secondary"
+      ? "bg-white text-black hover:bg-white/90"
+      : "bg-white text-black hover:bg-white/90";
+  const cls = `${base} ${v} ${className}`;
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(children, { className: cls });
+  }
+  return (
+    <button className={cls} {...props}>
+      {children}
+    </button>
+  );
+};
+
+const Card = ({ className = "", children }) => (
+  <div className={`border border-white/10 bg-white/5 ${className}`}>{children}</div>
+);
+
+const CardContent = ({ className = "", children }) => (
+  <div className={className}>{children}</div>
+);
+
 import {
   ArrowRight,
   Calendar,
